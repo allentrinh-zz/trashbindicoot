@@ -1,0 +1,118 @@
+html {
+  font-size: 16px;
+}
+
+body {
+	font-family: $font1;
+  font-weight: 400;
+  color: $black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font2;
+  letter-spacing: 3px;
+  font-weight: 400 !important;
+}
+
+h2 {
+  line-height: 1.5;
+}
+
+a {
+  color: $primaryColor;
+  &:hover {
+    color: lighten($primaryColor, 10);
+  }
+}
+
+.button {
+  position: relative;
+  color: #fff;
+  background: $primaryColor;
+  border: 0;
+  border-radius: 20px;
+  padding: 1.25rem 1.75rem;
+  margin: 0;
+  font-style: italic;
+  font-family: $font1;
+  @include box-shadow;
+  @include transition;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: darken($primaryColor, 10);
+    border-radius: 20px;
+    transform: scale(0);
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 5px $complementaryColor;
+  }
+  &:hover {
+    top: -1px;
+    color: #fff;
+    &::before {
+      animation: pulse .4s ease-in-out;
+    }
+  }
+  &:active {
+    top: 0;
+    background: darken($primaryColor, 10);
+    outline: 0;
+    box-shadow: none;
+  }
+  &--ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    margin-bottom: 1rem;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      top: 0;
+      color: #fff;
+      background: $primaryColor;
+      border-color: $primaryColor;
+    }
+    &:active {
+      top: 0;
+      background: #fff;
+      color: #fff;
+    }
+    &:focus,
+    &:focus:not(:active) {
+      outline: 0;
+      background: $primaryColor;
+      color: #fff;
+      box-shadow: 0 0 0 5px $complementaryColor;
+    }
+  }
+  &--alt {
+    background: $complementaryColor;
+    &::before {
+      background: darken($complementaryColor, 10  );
+    }
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 5px darken($primaryColor, 10);
+    }
+    &:hover {
+      top: -1px;
+      &::before {
+        animation: pulse .4s ease-in-out;
+      }
+    }
+    &:active {
+      top: 0;
+      background: darken($complementaryColor, 10);
+    }
+  }
+  span {
+    position: relative;
+  }
+}
